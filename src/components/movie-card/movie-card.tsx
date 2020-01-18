@@ -6,11 +6,11 @@ import {
   MovieCardTitle,
   MovieCardLink
 } from './movie-card-styles'
-import { Movie } from '../../mocks/movies'
+import { IMovie } from '../../mocks'
 import { VideoPlayer } from '../video-player'
 
 interface MovieCardProps {
-  movie: Movie
+  movie: IMovie
 }
 
 export const MovieCard = ({

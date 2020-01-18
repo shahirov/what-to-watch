@@ -1,18 +1,27 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-import { Main } from '../main/main'
-import { Movie } from '../../mocks/movies'
+import { Home, MovieOverview } from '../../pages'
 import { GlobalStyles } from '../../global-styles'
+import { IMovie, IMovieOverview } from '../../mocks'
 
 interface AppProps {
-  movies: Movie[]
+  movies: IMovie[]
+  movieOverview: IMovieOverview
 }
 
-export const App = ({ movies }: AppProps) => {
+export const App = ({ movies, movieOverview }: AppProps) => {
   return (
     <>
       <GlobalStyles />
-      <Main movies={movies} />
+      <Switch>
+        <Route exact path="/">
+          <Home movies={movies} />
+        </Route>
+        <Route path="/movie">
+          <MovieOverview movieOverview={movieOverview} />
+        </Route>
+      </Switch>
     </>
   )
 }

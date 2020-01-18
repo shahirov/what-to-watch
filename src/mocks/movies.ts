@@ -1,4 +1,4 @@
-export interface Movie {
+export interface IMovie {
   id: number
   title: string
   previewImage: string
@@ -6,7 +6,7 @@ export interface Movie {
   videoLink: string
 }
 
-export const movies: Movie[] = [
+export const movies: IMovie[] = [
   {
     id: 1,
     title: 'Fantastic Beasts: The Crimes of Grindelwald',

@@ -1,19 +1,15 @@
 import React from 'react'
 
-import { MovieList } from '../movie-list'
-import { Movie } from '../../mocks/movies'
-import { ReactComponent as Logo } from '../../assets/logo.svg'
+import { IMovie } from '../../mocks'
+import { MoviesList } from '../../components/movies-list'
 
-interface MainProps {
-  movies: Movie[]
+interface HomeProps {
+  movies: IMovie[]
 }
 
-export const Main = ({ movies }: MainProps) => {
+export const Home = ({ movies }: HomeProps) => {
   return (
-    <div>
-      <div className="visually-hidden">
-        <Logo />
-      </div>
+    <>
       <section className="movie-card">
         <div className="movie-card__bg">
           <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
@@ -131,7 +127,7 @@ export const Main = ({ movies }: MainProps) => {
             </li>
           </ul>
 
-          <MovieList movies={movies} />
+          <MoviesList movies={movies} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">
@@ -154,6 +150,6 @@ export const Main = ({ movies }: MainProps) => {
           </div>
         </footer>
       </div>
-    </div>
+    </>
   )
 }
