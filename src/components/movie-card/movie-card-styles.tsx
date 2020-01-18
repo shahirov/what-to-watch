@@ -40,15 +40,6 @@ export const MovieCardImageContainer = styled.div`
   }
 `
 
-export const MovieCardImage = styled.img`
-  vertical-align: top;
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-  font-family: 'object-fit:cover';
-  object-fit: cover;
-`
-
 export const MovieCardTitle = styled.h3`
   position: absolute;
   z-index: 2;

@@ -1,30 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import {
   MovieCardWrapper,
   MovieCardImageContainer,
-  MovieCardImage,
   MovieCardTitle,
   MovieCardLink
 } from './movie-card-styles'
 import { Movie } from '../../mocks/movies'
+import { VideoPlayer } from '../video-player'
 
 interface MovieCardProps {
   movie: Movie
-  onMovieCardMouseEnter: (movie: Movie) => void
 }
 
-export const MovieCard: React.FC<MovieCardProps> = ({ movie, onMovieCardMouseEnter }) => {
-  const { previewImage: imageUrl, title, videoLink } = movie
+export const MovieCard = ({
+  movie: { previewImage: imageUrl, title, previewVideoLink, videoLink }
+}: MovieCardProps) => {
+  const [isVideoPlayerActive, setVideoPlayerActivation] = useState<boolean>(false)
+
+  let timer: number | null = null
+
+  const activateVideoPlayer = () => {
+    timer = setTimeout(() => setVideoPlayerActivation(true), 1000)
+  }
+
+  const deactivateVideoPlayer = () => {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    setVideoPlayerActivation(false)
+  }
 
   return (
-    <MovieCardWrapper onMouseEnter={() => onMovieCardMouseEnter(movie)}>
+    <MovieCardWrapper onMouseEnter={activateVideoPlayer} onMouseLeave={deactivateVideoPlayer}>
       <MovieCardImageContainer>
-        <MovieCardImage src={imageUrl} alt={title} width="280" height="175" />
+        <VideoPlayer
+          posterImage={imageUrl}
+          videoUrl={previewVideoLink}
+          isPlaying={isVideoPlayerActive}
+          width="280"
+          height="175"
+        />
       </MovieCardImageContainer>
-      <MovieCardTitle>
-        <MovieCardLink href={videoLink}>{title}</MovieCardLink>
-      </MovieCardTitle>
+      {!isVideoPlayerActive && (
+        <MovieCardTitle>
+          <MovieCardLink href={videoLink}>{title}</MovieCardLink>
+        </MovieCardTitle>
+      )}
     </MovieCardWrapper>
   )
 }

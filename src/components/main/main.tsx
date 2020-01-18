@@ -8,7 +8,7 @@ interface MainProps {
   movies: Movie[]
 }
 
-export const Main: React.FC<MainProps> = ({ movies }) => {
+export const Main = ({ movies }: MainProps) => {
   return (
     <div>
       <div className="visually-hidden">

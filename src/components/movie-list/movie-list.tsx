@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { Movie } from '../../mocks/movies'
 import { MovieCard } from '../movie-card/movie-card'
@@ -8,17 +8,11 @@ interface MovieListProps {
   movies: Movie[]
 }
 
-export const MovieList: React.FC<MovieListProps> = ({ movies }) => {
-  const [activeMovieCard, setActiveMovieCard] = useState<Movie>()
-
-  const handleMovieCardMouseEnter = (movieCard: Movie) => {
-    setActiveMovieCard(movieCard)
-  }
-
+export const MovieList = ({ movies }: MovieListProps) => {
   return (
     <MovieListWrapper>
       {movies.map(movie => (
-        <MovieCard key={movie.id} movie={movie} onMovieCardMouseEnter={handleMovieCardMouseEnter} />
+        <MovieCard key={movie.id} movie={movie} />
       ))}
     </MovieListWrapper>
   )

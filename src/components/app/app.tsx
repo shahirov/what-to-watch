@@ -8,7 +8,7 @@ interface AppProps {
   movies: Movie[]
 }
 
-export const App: React.FC<AppProps> = ({ movies }) => {
+export const App = ({ movies }: AppProps) => {
   return (
     <>
       <GlobalStyles />
