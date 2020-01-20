@@ -14,7 +14,7 @@ interface MovieCardProps {
 }
 
 export const MovieCard = ({
-  movie: { previewImage: imageUrl, title, previewVideoLink, videoLink }
+  movie: { previewImage: imageUrl, title, previewVideo }
 }: MovieCardProps) => {
   const [isVideoPlayerActive, setVideoPlayerActivation] = useState<boolean>(false)
 
@@ -36,7 +36,7 @@ export const MovieCard = ({
       <MovieCardImageContainer>
         <VideoPlayer
           posterImage={imageUrl}
-          videoUrl={previewVideoLink}
+          videoUrl={previewVideo}
           isPlaying={isVideoPlayerActive}
           width="280"
           height="175"
@@ -44,7 +44,7 @@ export const MovieCard = ({
       </MovieCardImageContainer>
       {!isVideoPlayerActive && (
         <MovieCardTitle>
-          <MovieCardLink href={videoLink}>{title}</MovieCardLink>
+          <MovieCardLink href="movie-page.html">{title}</MovieCardLink>
         </MovieCardTitle>
       )}
     </MovieCardWrapper>
