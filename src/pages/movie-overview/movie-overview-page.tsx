@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { IMovieOverview, movies } from '../../mocks'
-import { MoviesList } from '../../components/movies-list'
+import { IMovieOverview } from '../../mocks'
+import { MovieList } from '../../components/movie-list'
 
 interface MovieOverviewProps {
   movieOverview: IMovieOverview
@@ -132,7 +132,7 @@ export const MovieOverview = ({
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <MoviesList movies={movies} />
+          <MovieList />
         </section>
 
         <footer className="page-footer">

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const MoviesListWrapper = styled.div`
+export const MovieListWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;

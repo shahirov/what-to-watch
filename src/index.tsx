@@ -5,12 +5,12 @@ import { BrowserRouter as Router } from 'react-router-dom'
 
 import { store } from './store'
 import { App } from './components/app'
-import { movies, movieOverview } from './mocks'
+import { movieOverview } from './mocks'
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
-      <App movies={movies} movieOverview={movieOverview} />
+      <App movieOverview={movieOverview} />
     </Router>
   </Provider>,
   document.getElementById('root')
