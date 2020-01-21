@@ -16,19 +16,21 @@ interface MovieCardProps {
 export const MovieCard = ({
   movie: { previewImage: imageUrl, title, previewVideo }
 }: MovieCardProps) => {
-  const [isVideoPlayerActive, setVideoPlayerActivation] = useState<boolean>(false)
+  const [isVideoPlayerActive, setVideoPlayerActive] = useState<boolean>(false)
 
-  let timer: number | null = null
+  const videoPlayDelay = 1000
+  let delayTimer: number | null = null
 
   const activateVideoPlayer = () => {
-    timer = setTimeout(() => setVideoPlayerActivation(true), 1000)
+    delayTimer = setTimeout(() => setVideoPlayerActive(true), videoPlayDelay)
   }
 
   const deactivateVideoPlayer = () => {
-    if (timer) {
-      clearTimeout(timer)
+    if (delayTimer) {
+      clearTimeout(delayTimer)
+      delayTimer = null
     }
-    setVideoPlayerActivation(false)
+    setVideoPlayerActive(false)
   }
 
   return (
@@ -37,7 +39,7 @@ export const MovieCard = ({
         <VideoPlayer
           posterImage={imageUrl}
           videoUrl={previewVideo}
-          isPlaying={isVideoPlayerActive}
+          isVideoPlaying={isVideoPlayerActive}
           width="280"
           height="175"
         />

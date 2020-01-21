@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from 'react'
 interface VideoPlayerProps {
   posterImage: string
   videoUrl: string
-  isPlaying: boolean
+  isVideoPlaying: boolean
   width: string
   height: string
 }
@@ -11,32 +11,29 @@ interface VideoPlayerProps {
 export const VideoPlayer = ({
   posterImage,
   videoUrl,
-  isPlaying,
+  isVideoPlaying,
   width,
   height
 }: VideoPlayerProps) => {
-  const videoPlayerRef = useRef<HTMLVideoElement>(null)
+  const videoPlayerRef = useRef<HTMLVideoElement | null>(null)
 
   useEffect(() => {
-    const video = videoPlayerRef && videoPlayerRef.current
+    let isPlayed = false
+    const videoPlayer = !isPlayed && videoPlayerRef.current
 
-    if (video && isPlaying) {
-      video.play()
-    } else {
-      video?.load()
+    if (videoPlayer && isVideoPlaying) {
+      videoPlayer.src = videoUrl
+      videoPlayer.play()
+      isPlayed = true
     }
-  }, [isPlaying])
 
-  return (
-    <video
-      ref={videoPlayerRef}
-      poster={posterImage}
-      width={width}
-      height={height}
-      preload="none"
-      muted
-    >
-      <source src={videoUrl} />
-    </video>
-  )
+    return () => {
+      if (videoPlayer && isPlayed) {
+        videoPlayer.pause()
+        videoPlayer.src = ''
+      }
+    }
+  }, [isVideoPlaying, videoUrl])
+
+  return <video ref={videoPlayerRef} poster={posterImage} width={width} height={height} muted />
 }

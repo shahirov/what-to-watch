@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { StyledGenreList, GenreItem, GenreLink } from './genre-list-styles'
 import { changeGenre } from '../../features/movies/slice'
+import { StyledGenreList, GenreItem, GenreLink } from './genre-list-styles'
 import { selectGenres, selectGenre } from '../../features/movies/selectors'
 
 export const GenreList = () => {
