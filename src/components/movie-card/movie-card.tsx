@@ -6,15 +6,15 @@ import {
   MovieCardTitle,
   MovieCardLink
 } from './movie-card-styles'
-import { IMovie } from '../../mocks'
 import { VideoPlayer } from '../video-player'
+import { Movie } from '../../features/movies/slice'
 
 interface MovieCardProps {
-  movie: IMovie
+  movie: Movie
 }
 
 export const MovieCard = ({
-  movie: { previewImage: imageUrl, title, previewVideo }
+  movie: { name, preview_image, preview_video_link }
 }: MovieCardProps) => {
   const [isVideoPlayerActive, setVideoPlayerActive] = useState<boolean>(false)
 
@@ -37,8 +37,8 @@ export const MovieCard = ({
     <MovieCardWrapper onMouseEnter={activateVideoPlayer} onMouseLeave={deactivateVideoPlayer}>
       <MovieCardImageContainer>
         <VideoPlayer
-          posterImage={imageUrl}
-          videoUrl={previewVideo}
+          posterImage={preview_image}
+          videoUrl={preview_video_link}
           isVideoPlaying={isVideoPlayerActive}
           width="280"
           height="175"
@@ -46,7 +46,7 @@ export const MovieCard = ({
       </MovieCardImageContainer>
       {!isVideoPlayerActive && (
         <MovieCardTitle>
-          <MovieCardLink href="movie-page.html">{title}</MovieCardLink>
+          <MovieCardLink href="movie-page.html">{name}</MovieCardLink>
         </MovieCardTitle>
       )}
     </MovieCardWrapper>
