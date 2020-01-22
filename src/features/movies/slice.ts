@@ -2,22 +2,22 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export interface Movie {
   name: string
-  poster_image: string
-  preview_image: string
-  background_image: string
-  background_color: string
+  posterImage: string
+  previewImage: string
+  backgroundImage: string
+  backgroundColor: string
   description: string
   rating: number
-  scores_count: number
+  scoresCount: number
   director: string
   starring: string[]
-  run_time: number
+  runTime: number
   genre: string
   released: number
   id: number
-  is_favorite: boolean
-  video_link: string
-  preview_video_link: string
+  isFavorite: boolean
+  videoLink: string
+  previewVideoLink: string
 }
 
 interface MoviesState {
