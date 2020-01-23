@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import { useHistory } from 'react-router-dom'
 
 import {
   MovieCardWrapper,
@@ -13,26 +14,33 @@ interface MovieCardProps {
   movie: Movie
 }
 
-export const MovieCard = ({ movie: { name, previewImage, previewVideoLink } }: MovieCardProps) => {
+export const MovieCard = ({
+  movie: { name, previewImage, previewVideoLink, id }
+}: MovieCardProps) => {
+  const history = useHistory()
   const [isVideoPlayerActive, setVideoPlayerActive] = useState<boolean>(false)
 
-  const videoPlayDelay = 1000
-  let delayTimer: number | null = null
+  const videoPlayerTimer = useRef<number | undefined>()
 
   const activateVideoPlayer = () => {
-    delayTimer = setTimeout(() => setVideoPlayerActive(true), videoPlayDelay)
+    videoPlayerTimer.current = setTimeout(() => setVideoPlayerActive(true), 1000)
   }
 
   const deactivateVideoPlayer = () => {
-    if (delayTimer) {
-      clearTimeout(delayTimer)
-      delayTimer = null
-    }
+    clearTimeout(videoPlayerTimer.current)
     setVideoPlayerActive(false)
   }
 
+  const goToMovieOverviewPage = () => {
+    history.push(`/movie/${id}`)
+  }
+
   return (
-    <MovieCardWrapper onMouseEnter={activateVideoPlayer} onMouseLeave={deactivateVideoPlayer}>
+    <MovieCardWrapper
+      onMouseEnter={activateVideoPlayer}
+      onMouseLeave={deactivateVideoPlayer}
+      onClick={goToMovieOverviewPage}
+    >
       <MovieCardImageContainer>
         <VideoPlayer
           posterImage={previewImage}
@@ -44,7 +52,7 @@ export const MovieCard = ({ movie: { name, previewImage, previewVideoLink } }: M
       </MovieCardImageContainer>
       {!isVideoPlayerActive && (
         <MovieCardTitle>
-          <MovieCardLink href="movie-page.html">{name}</MovieCardLink>
+          <MovieCardLink to={`/movie/${id}`}>{name}</MovieCardLink>
         </MovieCardTitle>
       )}
     </MovieCardWrapper>

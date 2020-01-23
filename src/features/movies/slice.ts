@@ -42,7 +42,7 @@ const movies = createSlice({
     },
     getMoviesSuccess(state, action: PayloadAction<Movie[]>) {
       state.isLoading = false
-      state.movies = action.payload.sort((a, b) => a.name.localeCompare(b.name))
+      state.movies = action.payload
       state.error = null
     },
     getMoviesFailure(state, action: PayloadAction<Error>) {

@@ -2,16 +2,12 @@ import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
-import { Home, MovieOverview } from '../../pages'
+import { Home } from '../../pages/home'
 import { GlobalStyles } from '../../global-styles'
-import { IMovieOverview } from '../../mocks'
+import { MovieOverview } from '../../pages/movie-overview'
 import { getMoviesRequest } from '../../features/movies/slice'
 
-interface AppProps {
-  movieOverview: IMovieOverview
-}
-
-export const App = ({ movieOverview }: AppProps) => {
+export const App = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -22,12 +18,8 @@ export const App = ({ movieOverview }: AppProps) => {
     <>
       <GlobalStyles />
       <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/movie">
-          <MovieOverview movieOverview={movieOverview} />
-        </Route>
+        <Route exact path="/" component={Home} />
+        <Route path="/movie/:movieId" component={MovieOverview} />
       </Switch>
     </>
   )

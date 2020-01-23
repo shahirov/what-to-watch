@@ -17,7 +17,7 @@ export const useVideo = (isVideoPlaying: boolean, videoUrl: string) => {
         video.src = ''
       }
     }
-  }, [isVideoPlaying, videoUrl])
+  }, [isVideoPlaying, videoUrl, videoRef])
 
   return videoRef
 }
