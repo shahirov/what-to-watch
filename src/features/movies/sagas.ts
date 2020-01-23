@@ -2,7 +2,7 @@ import { takeLatest, put, fork } from 'redux-saga/effects'
 
 import { api } from '../../api'
 import { getMoviesRequest, getMoviesFailure, getMoviesSuccess } from './slice'
-import { renameKeysToCamelCase } from '../../utils/keysToCamelCase'
+import { renameKeysToCamelCase } from '../../utils/keys-to-camel-case'
 
 function* fetchMovies() {
   try {
