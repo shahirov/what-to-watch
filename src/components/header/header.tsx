@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { Logo } from '../logo'
-import { StyledPageHeader, UserBlock, UserBlockAvatar } from './page-header-styles'
+import { StyledHeader, UserBlock, UserBlockAvatar } from './header-styles'
 
-export const PageHeader = () => {
+export const Header = () => {
   return (
-    <StyledPageHeader>
+    <StyledHeader>
       <div>
         <Logo />
       </div>
@@ -15,6 +15,6 @@ export const PageHeader = () => {
           <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
         </UserBlockAvatar>
       </UserBlock>
-    </StyledPageHeader>
+    </StyledHeader>
   )
 }

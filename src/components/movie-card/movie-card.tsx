@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import {
@@ -21,6 +21,10 @@ export const MovieCard = ({
   const [isVideoPlayerActive, setVideoPlayerActive] = useState<boolean>(false)
 
   const videoPlayerTimer = useRef<number | undefined>()
+
+  useEffect(() => {
+    return () => clearTimeout(videoPlayerTimer.current)
+  }, [])
 
   const activateVideoPlayer = () => {
     videoPlayerTimer.current = setTimeout(() => setVideoPlayerActive(true), 1000)

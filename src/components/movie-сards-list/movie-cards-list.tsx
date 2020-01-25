@@ -2,18 +2,18 @@ import React from 'react'
 
 import { MovieCard } from '../movie-card'
 import { Movie } from '../../features/movies/slice'
-import { MovieListWrapper } from './movie-list-styles'
+import { StyledMovieCardsList } from './movie-cards-list-styles'
 
-interface MovieListProps {
+interface MovieCardsListProps {
   movies: Movie[]
 }
 
-export const MovieList = ({ movies }: MovieListProps) => {
+export const MovieCardsList = ({ movies }: MovieCardsListProps) => {
   return (
-    <MovieListWrapper>
+    <StyledMovieCardsList>
       {movies.map(movie => (
         <MovieCard key={movie.id} movie={movie} />
       ))}
-    </MovieListWrapper>
+    </StyledMovieCardsList>
   )
 }

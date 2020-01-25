@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledPageHeader = styled.header`
+export const StyledHeader = styled.header`
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
