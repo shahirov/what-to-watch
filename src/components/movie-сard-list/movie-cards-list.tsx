@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MovieCard } from '../movie-card'
+import { SmallMovieCard } from '../small-movie-card'
 import { Movie } from '../../features/movies/slice'
 import { StyledMovieCardsList } from './movie-cards-list-styles'
 
@@ -12,7 +12,7 @@ export const MovieCardsList = ({ movies }: MovieCardsListProps) => {
   return (
     <StyledMovieCardsList>
       {movies.map(movie => (
-        <MovieCard key={movie.id} movie={movie} />
+        <SmallMovieCard key={movie.id} movie={movie} />
       ))}
     </StyledMovieCardsList>
   )

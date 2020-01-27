@@ -13,12 +13,12 @@ import { ReactComponent as PlayIcon } from '../../assets/icons/play.svg'
 import { ReactComponent as AddIcon } from '../../assets/icons/add.svg'
 
 interface MovieCardDescriptionProps {
-  movie?: Movie
+  movie: Movie
 }
 
-export const MovieCardDescription = ({ movie }: MovieCardDescriptionProps) => {
-  const { name = '', released = '', genre = '' } = movie || {}
-
+export const MovieCardDescription = ({
+  movie: { name, released, genre }
+}: MovieCardDescriptionProps) => {
   return (
     <StyledMovieCardDesc>
       <MovieCardTitle>{name}</MovieCardTitle>

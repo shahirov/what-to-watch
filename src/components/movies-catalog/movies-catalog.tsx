@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { Footer } from '../footer'
 import { GenreList } from '../genre-list'
-import { MovieCardsList } from '../movie-сards-list'
+import { MovieCardsList } from '../movie-сard-list'
 import { selectMoviesByGenre } from '../../features/movies/selectors'
 import { StyledMoviesCatalog, MoviesCatalogButton } from './movies-catalog-styles'
 

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 
 import { Footer } from '../footer'
 import { RootState } from '../../store'
-import { MovieCardsList } from '../movie-сards-list'
+import { MovieCardsList } from '../movie-сard-list'
 import { Movie } from '../../features/movies/slice'
 import { selectMovieById, selectSimilarMovies } from '../../features/movies/selectors'
 import { CatalogContent, Catalog, CatalogTitle } from './similar-movies-catalog-styles'

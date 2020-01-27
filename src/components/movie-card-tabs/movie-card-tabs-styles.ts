@@ -1,5 +1,19 @@
 import styled from 'styled-components'
 
+export const TabNav = styled.nav`
+  height: 170px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+`
+
 export const TabList = styled.ul`
   padding: 0;
   margin: 0;
