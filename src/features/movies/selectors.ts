@@ -27,5 +27,9 @@ export const selectMovieById = createSelector([selectMovies, selectMovieId], (mo
   movies.find(movie => movie.id.toString() === id)
 )
 
-export const selectSimilarMovies = (state: RootState, currentMovie: Movie) =>
-  state.movies.movies.filter(movie => movie.genre === currentMovie.genre)
+export const selectSimilarMovies = (state: RootState, currentMovie?: Movie) =>
+  currentMovie
+    ? state.movies.movies
+        .filter(movie => movie.genre === currentMovie.genre)
+        .filter((_, idx) => idx < 4)
+    : state.movies.movies

@@ -10,6 +10,10 @@ export const StyledMovieCardPoster = styled.div`
   flex-shrink: 0;
 
   & img {
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
     font-family: 'object-fit:cover';
+    object-fit: cover;
   }
 `
