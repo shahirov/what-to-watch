@@ -3,13 +3,14 @@ import { createSelector } from '@reduxjs/toolkit'
 import { Movie } from './slice'
 import { RootState } from '../../store'
 import { selectGenre } from '../genre/selectors'
+import { DEFAULT_MOVIE_GENRE, SIMILAR_MOVIES_LIMIT } from '../../global/constants'
 
 export const selectMovies = (state: RootState) => state.movies.movies
 
 export const selectMovieId = (state: RootState, id: string) => id
 
 export const selectMoviesByGenre = createSelector([selectGenre, selectMovies], (genre, movies) =>
-  genre === 'All genres' ? movies : movies.filter(movie => movie.genre === genre)
+  genre === DEFAULT_MOVIE_GENRE ? movies : movies.filter(movie => movie.genre === genre)
 )
 
 export const selectGenreList = createSelector([selectMovies], movies => {
@@ -17,10 +18,7 @@ export const selectGenreList = createSelector([selectMovies], movies => {
 
   movies.forEach(movie => genreSet.add(movie.genre))
 
-  const genres = Array.from(genreSet)
-  genres.sort().unshift('All genres')
-
-  return genres
+  return [DEFAULT_MOVIE_GENRE, ...Array.from(genreSet)]
 })
 
 export const selectMovieById = createSelector([selectMovies, selectMovieId], (movies, id) =>
@@ -30,6 +28,6 @@ export const selectMovieById = createSelector([selectMovies, selectMovieId], (mo
 export const selectSimilarMovies = (state: RootState, currentMovie?: Movie) =>
   currentMovie
     ? state.movies.movies
-        .filter(movie => movie.genre === currentMovie.genre)
-        .filter((_, idx) => idx < 4)
+        .filter(movie => movie.id !== currentMovie.id && movie.genre === currentMovie.genre)
+        .filter((_, idx) => idx < SIMILAR_MOVIES_LIMIT)
     : state.movies.movies

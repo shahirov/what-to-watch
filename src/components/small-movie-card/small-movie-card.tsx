@@ -9,6 +9,7 @@ import {
 } from './small-movie-card-styles'
 import { VideoPlayer } from '../video-player'
 import { Movie } from '../../features/movies/slice'
+import { VIDEO_PLAY_DELAY_TIME } from '../../global/constants'
 
 interface MovieCardProps {
   movie: Movie
@@ -27,7 +28,7 @@ export const SmallMovieCard = ({
   }, [])
 
   const activateVideoPlayer = () => {
-    videoPlayerTimer.current = setTimeout(() => setVideoPlayerActive(true), 1000)
+    videoPlayerTimer.current = setTimeout(() => setVideoPlayerActive(true), VIDEO_PLAY_DELAY_TIME)
   }
 
   const deactivateVideoPlayer = () => {

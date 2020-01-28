@@ -1,8 +1,9 @@
 import { takeLatest, put, fork } from 'redux-saga/effects'
 
 import { api } from '../../api'
-import { getMoviesRequest, getMoviesFailure, getMoviesSuccess } from './slice'
+import { AxiosError } from 'axios'
 import { renameKeysToCamelCase } from '../../utils/keys-to-camel-case'
+import { getMoviesRequest, getMoviesFailure, getMoviesSuccess } from './slice'
 
 function* fetchMovies() {
   try {
@@ -10,7 +11,8 @@ function* fetchMovies() {
     const formatedData = yield data.map(renameKeysToCamelCase)
     yield put(getMoviesSuccess(formatedData))
   } catch (err) {
-    yield put(getMoviesFailure(err))
+    const error = err as AxiosError
+    yield put(getMoviesFailure(error))
   }
 }
 

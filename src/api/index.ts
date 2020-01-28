@@ -1,6 +1,8 @@
 import axios from 'axios'
 
+import { BASE_URL_API } from '../global/constants'
+
 export const api = axios.create({
-  baseURL: 'https://htmlacademy-react-2.appspot.com/wtw',
+  baseURL: BASE_URL_API,
   withCredentials: true
 })

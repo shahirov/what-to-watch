@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+import { AxiosError } from 'axios'
+
 export interface Movie {
   name: string
   posterImage: string
@@ -45,7 +47,7 @@ const movies = createSlice({
       state.movies = action.payload
       state.error = null
     },
-    getMoviesFailure(state, action: PayloadAction<Error>) {
+    getMoviesFailure(state, action: PayloadAction<AxiosError>) {
       state.isLoading = false
       state.error = action.payload
     }
