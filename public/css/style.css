@@ -164,18 +164,6 @@
   display: none
 }
 
-.movie-card--full {
-  padding-bottom: 45px;
-  min-height: 100vh
-}
-
-.movie-card__hero {
-  position: relative;
-  z-index: 1;
-  min-height: 555px;
-  padding-bottom: 210px
-}
-
 .movie-card__bg img,
 .movie-card__poster img {
   vertical-align: top;
@@ -203,19 +191,6 @@
 .movie-card__reviews-col:last-child,
 .movie-card__text-col:last-child {
   margin-right: 0
-}
-
-.movie-card__translate-top {
-  margin-top: -170px;
-  position: relative;
-  z-index: 2
-}
-
-.movie-card__text {
-  color: #252525;
-  width: 635px;
-  font-size: 19px;
-  line-height: 27px
 }
 
 .movie-card__row {
@@ -279,51 +254,6 @@
   bottom: 0;
   background: #eee5b5;
   display: none
-}
-
-.movie-rating {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  padding-top: 35px;
-  padding-bottom: 25px
-}
-
-.movie-rating__score {
-  background: rgba(255, 255, 255, .24);
-  border-radius: 8px;
-  font-size: 30px;
-  line-height: 36px;
-  color: rgba(0, 0, 0, .5);
-  padding: 8px 12px;
-  margin-right: 9px
-}
-
-.movie-rating__meta {
-  margin: 0;
-  font-size: 19px;
-  color: rgba(0, 0, 0, .5);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex
-}
-
-.movie-rating__level {
-  font-weight: 700
-}
-
-.movie-rating__level::after {
-  content: '·';
-  margin-left: 4px;
-  margin-right: 4px;
-  font-weight: 400
-}
-
-.movie-rating__count {
-  color: #382c2a
 }
 
 .page-title {

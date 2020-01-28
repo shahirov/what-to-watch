@@ -1,28 +1,37 @@
-import React, { useState } from 'react'
+import React, { Dispatch, SetStateAction, useState } from 'react'
 
 import { TabList, TabItem, TabItemLink, TabNav } from './movie-card-tabs-styles'
 
-export const MovieCardTabs = () => {
-  const [activeLink, setActiveLink] = useState<number>(0)
+interface MovieCardTabsProps {
+  tabs: { [key: string]: JSX.Element }
+  onTabSelect: Dispatch<SetStateAction<string>>
+}
 
-  const tabList = [{ title: 'Overview' }, { title: 'Details' }, { title: 'Reviews' }]
+export const MovieCardTabs = ({ tabs, onTabSelect }: MovieCardTabsProps) => {
+  const [activeLinkIdx, setActiveLinkIdx] = useState<number>(0)
 
-  const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, idx: number) => {
+  const selectTab = (
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    tab: string,
+    idx: number
+  ) => {
     event.preventDefault()
-    setActiveLink(idx)
+
+    setActiveLinkIdx(idx)
+    onTabSelect(tab)
   }
 
   return (
     <TabNav>
       <TabList>
-        {tabList.map(({ title }, idx) => (
+        {Object.keys(tabs).map((tab, idx) => (
           <TabItem key={idx}>
             <TabItemLink
               href="#/"
-              active={activeLink === idx}
-              onClick={event => handleClick(event, idx)}
+              active={activeLinkIdx === idx}
+              onClick={event => selectTab(event, tab, idx)}
             >
-              {title}
+              {tab}
             </TabItemLink>
           </TabItem>
         ))}
