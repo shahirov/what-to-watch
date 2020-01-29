@@ -1,7 +1,7 @@
-import { all } from 'redux-saga/effects'
+import { all, fork } from 'redux-saga/effects'
 
-import { MoviesSagas } from '../features/movies/sagas'
+import { moviesSaga } from '../features/movies/sagas'
 
 export function* rootSaga() {
-  yield all([...MoviesSagas])
+  yield all([fork(moviesSaga)])
 }

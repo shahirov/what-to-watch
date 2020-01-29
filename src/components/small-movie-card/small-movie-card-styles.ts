@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 export const SmallMovieCardWrapper = styled.article`
   border-radius: 6px;
@@ -9,6 +8,7 @@ export const SmallMovieCardWrapper = styled.article`
   width: calc((100% - 30px) / 4);
   margin-right: 10px;
   margin-bottom: 55px;
+  cursor: pointer;
 
   &:nth-child(4n) {
     margin-right: 0;
@@ -54,7 +54,7 @@ export const MovieCardTitle = styled.h3`
   font-weight: 500;
 `
 
-export const MovieCardLink = styled(Link)`
+export const MovieCardText = styled.span`
   display: inline-block;
   vertical-align: top;
   text-decoration: none;

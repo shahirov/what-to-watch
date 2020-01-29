@@ -5,7 +5,7 @@ import {
   SmallMovieCardWrapper,
   MovieCardImageContainer,
   MovieCardTitle,
-  MovieCardLink
+  MovieCardText
 } from './small-movie-card-styles'
 import { VideoPlayer } from '../video-player'
 import { Movie } from '../../features/movies/slice'
@@ -36,7 +36,7 @@ export const SmallMovieCard = ({
     setVideoPlayerActive(false)
   }
 
-  const goToMovieOverviewPage = () => {
+  const goToMovieDetailsPage = () => {
     history.push(`/movie/${id}`)
   }
 
@@ -44,7 +44,7 @@ export const SmallMovieCard = ({
     <SmallMovieCardWrapper
       onMouseEnter={activateVideoPlayer}
       onMouseLeave={deactivateVideoPlayer}
-      onClick={goToMovieOverviewPage}
+      onClick={goToMovieDetailsPage}
     >
       <MovieCardImageContainer>
         <VideoPlayer
@@ -57,7 +57,7 @@ export const SmallMovieCard = ({
       </MovieCardImageContainer>
       {!isVideoPlayerActive && (
         <MovieCardTitle>
-          <MovieCardLink to={`/movie/${id}`}>{name}</MovieCardLink>
+          <MovieCardText>{name}</MovieCardText>
         </MovieCardTitle>
       )}
     </SmallMovieCardWrapper>

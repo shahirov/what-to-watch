@@ -6,7 +6,7 @@ import { selectGenre } from '../genre/selectors'
 import { DEFAULT_MOVIE_GENRE, SIMILAR_MOVIES_LIMIT } from '../../global/constants'
 
 export const selectMovies = (state: RootState) => state.movies.movies
-
+export const selectPromoMovie = (state: RootState) => state.movies.promoMovie
 export const selectMovieId = (state: RootState, id: string) => id
 
 export const selectMoviesByGenre = createSelector([selectGenre, selectMovies], (genre, movies) =>
