@@ -1,6 +1,4 @@
-import React from 'react'
-
-import { useVideo } from '../../hooks'
+import React, { useEffect, useRef } from 'react'
 
 interface VideoPlayerProps {
   posterImage: string
@@ -17,7 +15,23 @@ export const VideoPlayer = ({
   width,
   height
 }: VideoPlayerProps) => {
-  const videoRef = useVideo(isVideoPlaying, videoUrl)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef && videoRef.current
+
+    if (video && isVideoPlaying) {
+      video.src = videoUrl
+      video.play()
+    }
+
+    return () => {
+      if (video) {
+        video.pause()
+        video.src = ''
+      }
+    }
+  }, [isVideoPlaying, videoUrl])
 
   return <video muted ref={videoRef} poster={posterImage} width={width} height={height} />
 }

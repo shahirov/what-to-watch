@@ -4,20 +4,17 @@ import {
   StyledMovieCardDesc,
   MovieCardTitle,
   MovieCardMeta,
-  MovieCardGenre,
-  MovieCardButtons,
-  MovieCardButton
+  MovieCardGenre
 } from './movie-card-description-styles'
 import { Movie } from '../../features/movies/slice'
-import { ReactComponent as PlayIcon } from '../../assets/icons/play.svg'
-import { ReactComponent as AddIcon } from '../../assets/icons/add.svg'
+import { MovieCardButtons } from '../movie-card-buttons'
 
 interface MovieCardDescriptionProps {
   movie: Movie
 }
 
 export const MovieCardDescription = ({
-  movie: { name, released, genre }
+  movie: { id, name, released, genre }
 }: MovieCardDescriptionProps) => {
   return (
     <StyledMovieCardDesc>
@@ -26,17 +23,7 @@ export const MovieCardDescription = ({
         <MovieCardGenre>{genre}</MovieCardGenre>
         <span>{released}</span>
       </MovieCardMeta>
-
-      <MovieCardButtons>
-        <MovieCardButton type="button">
-          <PlayIcon />
-          <span>Play</span>
-        </MovieCardButton>
-        <MovieCardButton type="button">
-          <AddIcon />
-          <span>My list</span>
-        </MovieCardButton>
-      </MovieCardButtons>
+      <MovieCardButtons movieId={id} />
     </StyledMovieCardDesc>
   )
 }

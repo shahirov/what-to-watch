@@ -1,7 +1,8 @@
 import React from 'react'
 
 import { Logo } from '../logo'
-import { StyledHeader, UserBlock, UserBlockAvatar } from './header-styles'
+import { UserBlock } from '../user-block'
+import { StyledHeader } from './header-styles'
 
 export const Header = () => {
   return (
@@ -9,12 +10,7 @@ export const Header = () => {
       <div>
         <Logo />
       </div>
-
-      <UserBlock>
-        <UserBlockAvatar>
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-        </UserBlockAvatar>
-      </UserBlock>
+      <UserBlock />
     </StyledHeader>
   )
 }

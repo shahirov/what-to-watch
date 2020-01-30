@@ -3,8 +3,9 @@ import { useDispatch } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
 import { Home } from '../../pages/home'
-import { GlobalStyles } from '../../global/global-styles'
+import { MoviePlayer } from '../movie-player'
 import { MovieDetails } from '../../pages/movie-details'
+import { GlobalStyles } from '../../global/global-styles'
 import { getMoviesRequest } from '../../features/movies/slice'
 
 export const App = () => {
@@ -19,7 +20,8 @@ export const App = () => {
       <GlobalStyles />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/movie/:movieId" component={MovieDetails} />
+        <Route exact path="/movie/:movieId" component={MovieDetails} />
+        <Route exact path="/movie/:movieId/show" component={MoviePlayer} />
       </Switch>
     </>
   )
