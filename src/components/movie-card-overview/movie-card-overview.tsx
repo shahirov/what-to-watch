@@ -17,7 +17,7 @@ interface MovieCardOverviewProps {
 }
 
 export const MovieCardOverview = ({
-  movie: { rating, description, director, starring }
+  movie: { rating, description, director, starring, scoresCount }
 }: MovieCardOverviewProps) => {
   return (
     <>
@@ -25,7 +25,7 @@ export const MovieCardOverview = ({
         <MovieRatingScore>{rating}</MovieRatingScore>
         <MovieRatingMeta>
           <MovieRatingLevel>Very good</MovieRatingLevel>
-          <MovieRatingCount>{rating} ratings</MovieRatingCount>
+          <MovieRatingCount>{scoresCount} ratings</MovieRatingCount>
         </MovieRatingMeta>
       </MovieRating>
       <MovieCardText>

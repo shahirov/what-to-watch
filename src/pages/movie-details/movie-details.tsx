@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 import { RootState } from '../../store'
+import { Footer } from '../../components/footer'
 import { Movie } from '../../features/movies/slice'
+import { PageContent } from '../../components/page-content'
 import { MovieCardFull } from '../../components/movie-card-full'
 import { SimilarMoviesCatalog } from '../../components/similar-movies-catalog'
 import { selectMovieById, selectSimilarMovies } from '../../features/movies/selectors'
@@ -17,7 +19,10 @@ export const MovieDetails = () => {
   return movie ? (
     <>
       <MovieCardFull movie={movie} />
-      <SimilarMoviesCatalog similarMovies={similarMovies} />
+      <PageContent>
+        <SimilarMoviesCatalog similarMovies={similarMovies} />
+        <Footer />
+      </PageContent>
     </>
   ) : null
 }

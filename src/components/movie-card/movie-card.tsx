@@ -25,7 +25,7 @@ export const MovieCard = () => {
         <Header />
         <Wrapper>
           <MovieCardInfo>
-            <MovieCardPoster movie={promoMovie} />
+            <MovieCardPoster size="normal" movie={promoMovie} />
             <MovieCardDescription movie={promoMovie} />
           </MovieCardInfo>
         </Wrapper>

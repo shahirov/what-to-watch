@@ -16,6 +16,11 @@ export const MovieCardTextCol = styled.div`
   &:last-child {
     margin-right: 0;
   }
+
+  & p {
+    margin-top: 19px;
+    margin-bottom: 19px;
+  }
 `
 
 export const MovieCardDetailsItem = styled.p`

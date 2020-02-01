@@ -90,11 +90,11 @@ export const MoviePlayer = () => {
   if (!movie) return null
 
   const { isPlaying, progress, endTime } = playerStatus
-  const { posterImage, name } = movie
+  const { backgroundImage, name } = movie
 
   return (
     <Player>
-      <PlayerVideo ref={playerRef} poster={posterImage} />
+      <PlayerVideo ref={playerRef} poster={backgroundImage} />
 
       <PlayerExit type="button" onClick={exitFromMoviePlayer}>
         Exit

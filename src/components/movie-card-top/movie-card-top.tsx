@@ -26,7 +26,7 @@ export const MovieCardTop = ({ movie }: MovieCardTopProps) => {
   return (
     <StyledMovieCardTop>
       <MovieCardInfo>
-        <MovieCardPoster movie={movie} />
+        <MovieCardPoster size="big" movie={movie} />
         <MovieCardDesc>
           <MovieCardTabs tabs={tabs} onTabSelect={setSelectedTab} />
           {tabs[selectedTab]}

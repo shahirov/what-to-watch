@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
 export const StyledMoviesCatalog = styled.section`
-  background-image: linear-gradient(-180deg, #180202 0%, #000 100%);
-  color: #c9b37e;
-  padding: 15px 15px 70px;
+  margin-bottom: 115px;
+  max-width: 1300px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 75px;
 `

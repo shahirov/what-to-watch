@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Footer } from '../footer'
 import { MovieCardsList } from '../movie-сard-list'
 import { Movie } from '../../features/movies/slice'
 import { CatalogContent, Catalog, CatalogTitle } from './similar-movies-catalog-styles'
@@ -16,7 +15,6 @@ export const SimilarMoviesCatalog = ({ similarMovies }: SimilarMoviesCatalogProp
         <CatalogTitle>More like this</CatalogTitle>
         <MovieCardsList movies={similarMovies} />
       </Catalog>
-      <Footer />
     </CatalogContent>
   )
 }

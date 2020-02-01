@@ -28,7 +28,7 @@ export const MovieRatingLevel = styled.span`
   font-weight: 700;
 
   &::after {
-    content: '';
+    content: '·';
     margin-left: 4px;
     margin-right: 4px;
     font-weight: 400;
@@ -39,11 +39,16 @@ export const MovieRatingCount = styled.span`
   color: #382c2a;
 `
 
-export const MovieCardText = styled.span`
+export const MovieCardText = styled.div`
   color: #252525;
   width: 635px;
   font-size: 19px;
   line-height: 27px;
+
+  & p {
+    margin-top: 19px;
+    margin-bottom: 19px;
+  }
 `
 
 export const MovieCardDirector = styled.p`

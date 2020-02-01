@@ -22,7 +22,6 @@ export const MoviesCatalog = () => {
       <GenreList />
       <MovieCardsList movies={movies.slice(0, moviesCounter)} />
       {moviesCounter < movies.length && <ShowMoreBtn onButtonClick={showMoreMovies} />}
-      <Footer />
     </StyledMoviesCatalog>
   )
 }

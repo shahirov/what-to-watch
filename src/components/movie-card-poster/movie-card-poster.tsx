@@ -5,11 +5,12 @@ import { StyledMovieCardPoster } from './movie-card-poster-styles'
 
 interface MovieCardPosterProps {
   movie: Movie
+  size: 'small' | 'big' | 'normal'
 }
 
-export const MovieCardPoster = ({ movie: { posterImage, name } }: MovieCardPosterProps) => {
+export const MovieCardPoster = ({ movie: { posterImage, name }, size }: MovieCardPosterProps) => {
   return (
-    <StyledMovieCardPoster>
+    <StyledMovieCardPoster size={size}>
       <img src={posterImage} alt={`${name} poster`} width="218" height="327" />
     </StyledMovieCardPoster>
   )

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const LightLogo = css`
+const LightLogoStyles = css`
   border: 1px solid rgba(223, 207, 119, 0.36);
   color: #d9cd8d;
 
@@ -12,7 +12,7 @@ const LightLogo = css`
   }
 `
 
-const DarkLogo = css`
+const DarkLogoStyles = css`
   margin: 0 auto 24px;
   border: 1px solid rgba(84, 80, 62, 0.36);
   color: #54503e;
@@ -29,7 +29,7 @@ const LogoLinkLetter = css`
 `
 
 export const LogoLink = styled(Link)<{ color: 'light' | 'dark' }>`
-  ${({ color }) => (color === 'light' ? LightLogo : DarkLogo)};
+  ${({ color }) => (color === 'light' ? LightLogoStyles : DarkLogoStyles)};
 
   border-radius: 8px;
   width: 93px;
