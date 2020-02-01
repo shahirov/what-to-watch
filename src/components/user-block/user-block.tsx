@@ -1,13 +1,21 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 
-import { StyledUserBlock, UserBlockAvatar } from './user-block-styles'
+import { selectUserAuthStatus } from '../../features/authentication/selectors'
+import { StyledUserBlock, UserBlockAvatar, UserBlockLink } from './user-block-styles'
 
 export const UserBlock = () => {
+  const isUserAuthed = useSelector(selectUserAuthStatus)
+
   return (
     <StyledUserBlock>
-      <UserBlockAvatar>
-        <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-      </UserBlockAvatar>
+      {isUserAuthed ? (
+        <UserBlockAvatar>
+          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+        </UserBlockAvatar>
+      ) : (
+        <UserBlockLink to="/login">Sign in</UserBlockLink>
+      )}
     </StyledUserBlock>
   )
 }
