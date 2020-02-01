@@ -7,7 +7,7 @@ export const Footer = () => {
   return (
     <StyledFooter>
       <div>
-        <Logo />
+        <Logo color="dark" />
       </div>
 
       <CopyRight>

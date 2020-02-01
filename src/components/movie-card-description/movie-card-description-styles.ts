@@ -20,7 +20,7 @@ export const MovieCardMeta = styled.p`
 
 export const MovieCardGenre = styled.span`
   &::after {
-    content: '';
+    content: '·';
     margin-left: 4px;
     margin-right: 4px;
   }

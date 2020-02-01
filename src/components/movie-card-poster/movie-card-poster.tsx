@@ -7,10 +7,10 @@ interface MovieCardPosterProps {
   movie: Movie
 }
 
-export const MovieCardPoster = ({ movie: { backgroundImage, name } }: MovieCardPosterProps) => {
+export const MovieCardPoster = ({ movie: { posterImage, name } }: MovieCardPosterProps) => {
   return (
     <StyledMovieCardPoster>
-      <img src={backgroundImage} alt={`${name} poster`} width="218" height="327" />
+      <img src={posterImage} alt={`${name} poster`} width="218" height="327" />
     </StyledMovieCardPoster>
   )
 }

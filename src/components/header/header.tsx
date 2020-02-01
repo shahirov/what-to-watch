@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <StyledHeader>
       <div>
-        <Logo />
+        <Logo color="light" />
       </div>
       <UserBlock />
     </StyledHeader>

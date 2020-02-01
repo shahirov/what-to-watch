@@ -7,10 +7,12 @@ interface MovieCardBackgroundProps {
   movie: Movie
 }
 
-export const MovieCardBackground = ({ movie: { posterImage, name } }: MovieCardBackgroundProps) => {
+export const MovieCardBackground = ({
+  movie: { backgroundImage, name }
+}: MovieCardBackgroundProps) => {
   return (
     <CardImgContainer>
-      <CardBgImage src={posterImage} alt={name} />
+      <CardBgImage src={backgroundImage} alt={name} />
     </CardImgContainer>
   )
 }
