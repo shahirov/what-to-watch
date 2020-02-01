@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Footer } from '../footer'
 import { GenreList } from '../genre-list'
 import { ShowMoreBtn } from '../show-more-btn'
 import { MOVIES } from '../../global/constants'

@@ -1,22 +1,15 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 
 import { Header } from '../header'
 import { MovieCardPoster } from '../movie-card-poster'
 import { MovieCardBackground } from '../movie-card-background'
 import { MovieCardDescription } from '../movie-card-description'
-import { getPromoMovieRequest } from '../../features/movies/slice'
 import { selectPromoMovie } from '../../features/movies/selectors'
 import { StyledMovieCard, MovieCardInfo, Wrapper } from './movie-card-styles'
 
 export const MovieCard = () => {
-  const dispatch = useDispatch()
-
   const promoMovie = useSelector(selectPromoMovie)
-
-  useEffect(() => {
-    dispatch(getPromoMovieRequest())
-  }, [dispatch])
 
   return (
     promoMovie && (
