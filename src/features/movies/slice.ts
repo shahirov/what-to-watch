@@ -25,7 +25,7 @@ interface MoviesState {
   movies: Movie[]
   promoMovie: Movie | null
   isLoading: boolean
-  error: Error | null
+  error: AxiosError | null
 }
 
 const initialState: MoviesState = {
@@ -37,7 +37,6 @@ const initialState: MoviesState = {
 
 const startLoading = (state: MoviesState) => {
   state.isLoading = true
-  state.error = null
 }
 
 const loadingFailed = (state: MoviesState, action: PayloadAction<AxiosError>) => {
@@ -53,14 +52,12 @@ const movies = createSlice({
     getMoviesSuccess(state, action: PayloadAction<Movie[]>) {
       state.isLoading = false
       state.movies = action.payload
-      state.error = null
     },
     getMoviesFailure: loadingFailed,
     getPromoMovieRequest: startLoading,
     getPromoMovieSuccess(state, action: PayloadAction<Movie>) {
       state.isLoading = false
       state.promoMovie = action.payload
-      state.error = null
     },
     getPromoMovieFailure: loadingFailed
   }
