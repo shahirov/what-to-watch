@@ -12,7 +12,7 @@ import {
   SignInWrapper
 } from './sign-in-form-styles'
 import { useForm } from '../../hooks/use-form'
-import { loginStart } from '../../features/authentication/slice'
+import { loginStart } from '../../features/user/slice'
 
 export const SingInForm = () => {
   const dispatch = useDispatch()

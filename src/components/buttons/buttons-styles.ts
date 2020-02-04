@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const LinkButton = styled(Link)`
+const ButtonStyles = css`
   display: flex;
   vertical-align: top;
   border: 0;
@@ -34,4 +34,14 @@ export const LinkButton = styled(Link)`
     background: rgba(0, 0, 0, 0.51);
     transform: scale(1.1);
   }
+`
+
+export const LinkButton = styled(Link)`
+  ${ButtonStyles};
+`
+
+export const DefaultButton = styled.button`
+  ${ButtonStyles};
+
+  outline: none;
 `

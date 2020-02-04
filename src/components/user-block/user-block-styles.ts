@@ -5,7 +5,7 @@ export const StyledUserBlock = styled.div`
   margin-left: auto;
 `
 
-export const UserBlockAvatar = styled.div`
+export const UserBlockAvatar = styled(Link)`
   width: 63px;
   height: 63px;
   overflow: hidden;
@@ -24,4 +24,8 @@ export const UserBlockLink = styled(Link)`
   &:hover {
     color: #c9b37e;
   }
+`
+
+export const UserAvatar = styled.img`
+  border-radius: 50%;
 `

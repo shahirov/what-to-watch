@@ -1,9 +1,5 @@
 import styled from 'styled-components'
 
-interface PlayerTogglerProps {
-  position: number
-}
-
 export const Player = styled.div`
   position: fixed;
   top: 0;
@@ -85,24 +81,6 @@ export const PlayerToggler = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
 `
-
-// export const PlayerToggler = styled.div.attrs<PlayerTogglerProps>(
-//   ({ position }) => ({
-//     position: position + '%'
-//   })
-// )<PlayerTogglerProps>`
-//   display: block;
-//   width: 17px;
-//   height: 17px;
-//   border-radius: 50%;
-//   background: #D9CD8D;
-//   font-size: 0;
-//   cursor: pointer;
-//   position: absolute;
-//   left: ${({ position }) => position};
-//   top: 50%;
-//   transform: translate(-50%, -50%);
-// `
 
 export const PlayerTimeValue = styled.div`
   width: 60px;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { LinkButton } from './play-button-styles'
+import { LinkButton } from '../buttons-styles'
 import { ReactComponent as PlayIcon } from '../../../assets/icons/play.svg'
 
 interface PlayButtonProps {
@@ -9,7 +9,7 @@ interface PlayButtonProps {
 
 export const PlayButton = ({ movieId }: PlayButtonProps) => {
   return (
-    <LinkButton to={`/movie/${movieId}/show`}>
+    <LinkButton to={`/movie/${movieId}/player`}>
       <PlayIcon />
       <span>Play</span>
     </LinkButton>

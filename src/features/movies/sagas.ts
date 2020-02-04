@@ -11,13 +11,13 @@ import {
   Movie
 } from './slice'
 import { api } from '../../api'
-import { renameKeysToCamelCase } from '../../utils/keys-to-camel-case'
+import { normalizeObjectKeys } from '../../utils/normalize-object-keys'
 
 function* fetchMovies() {
   try {
     const response: { data: any[] } = yield call(api.get, '/films')
-    const formatedData = yield response.data.map(renameKeysToCamelCase)
-    yield put(getMoviesSuccess(formatedData))
+    const normalizedData = response.data.map(normalizeObjectKeys)
+    yield put(getMoviesSuccess(normalizedData))
   } catch (err) {
     const error = err as AxiosError
     yield put(getMoviesFailure(error))
@@ -27,8 +27,8 @@ function* fetchMovies() {
 function* fetchPromoMovie() {
   try {
     const response: { data: Movie } = yield call(api.get, '/films/promo')
-    const formatedData = yield renameKeysToCamelCase(response.data)
-    yield put(getPromoMovieSuccess(formatedData))
+    const normalizedData = normalizeObjectKeys(response.data)
+    yield put(getPromoMovieSuccess(normalizedData))
   } catch (err) {
     const error = err as AxiosError
     yield put(getPromoMovieFailure(error))

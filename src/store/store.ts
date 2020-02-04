@@ -12,10 +12,3 @@ export const store = configureStore({
 })
 
 sagaMiddleware.run(rootSaga)
-
-if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./root-reducer', () => {
-    const newRootReducer = require('./root-reducer').default
-    store.replaceReducer(newRootReducer)
-  })
-}
