@@ -6,15 +6,15 @@ import { ReviewButton } from '../buttons/review-button'
 import { StyledMovieCardButtons } from './movie-card-buttons-styles'
 
 interface MovieCardButtonsProps {
-  movieId: string | number
+  movieId: number
 }
 
 export const MovieCardButtons = ({ movieId }: MovieCardButtonsProps) => {
   return (
     <StyledMovieCardButtons>
       <PlayButton movieId={movieId} />
-      <ListButton />
-      <ReviewButton />
+      <ListButton movieId={movieId} />
+      <ReviewButton movieId={movieId} />
     </StyledMovieCardButtons>
   )
 }

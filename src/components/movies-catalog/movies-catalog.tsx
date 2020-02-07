@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 import { GenreList } from '../genre-list'
 import { ShowMoreBtn } from '../show-more-btn'
 import { MOVIES } from '../../global/constants'
-import { MovieCardsList } from '../movie-сard-list'
+import { MovieCardList } from '../movie-сard-list'
 import { StyledMoviesCatalog } from './movies-catalog-styles'
 import { selectMoviesByGenre } from '../../features/movies/selectors'
 
@@ -19,7 +19,7 @@ export const MoviesCatalog = () => {
   return (
     <StyledMoviesCatalog>
       <GenreList />
-      <MovieCardsList movies={movies.slice(0, moviesCounter)} />
+      <MovieCardList movies={movies.slice(0, moviesCounter)} />
       {moviesCounter < movies.length && <ShowMoreBtn onButtonClick={showMoreMovies} />}
     </StyledMoviesCatalog>
   )

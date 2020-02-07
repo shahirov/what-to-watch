@@ -20,7 +20,6 @@ export const SmallMovieCard = ({
 }: MovieCardProps) => {
   const history = useHistory()
   const [isVideoPlayerActive, setVideoPlayerActive] = useState<boolean>(false)
-
   const videoPlayerTimer = useRef<number | undefined>()
 
   useEffect(() => {

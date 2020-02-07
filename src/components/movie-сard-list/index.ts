@@ -1,1 +1,1 @@
-export * from './movie-cards-list'
+export * from './movie-card-list'

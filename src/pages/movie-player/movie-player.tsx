@@ -28,7 +28,9 @@ export const MoviePlayer = () => {
   const history = useHistory()
   const { movieId } = useParams<{ movieId: string }>()
 
-  const movie = useSelector<RootState, Movie | undefined>(state => selectMovieById(state, movieId))
+  const movie = useSelector<RootState, Movie | undefined>(state =>
+    selectMovieById(state, parseInt(movieId))
+  )
 
   const playerRef = useRef<HTMLVideoElement>(null)
 
@@ -90,11 +92,11 @@ export const MoviePlayer = () => {
   if (!movie) return null
 
   const { isPlaying, progress, endTime } = playerStatus
-  const { backgroundImage, name } = movie
+  const { posterImage, name } = movie
 
   return (
     <Player>
-      <PlayerVideo ref={playerRef} poster={backgroundImage} />
+      <PlayerVideo ref={playerRef} poster={posterImage} />
 
       <PlayerExit type="button" onClick={exitFromMoviePlayer}>
         Exit

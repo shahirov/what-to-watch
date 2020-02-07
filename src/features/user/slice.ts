@@ -29,7 +29,7 @@ const user = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    loginStart() {},
+    loginStart(state, action: PayloadAction<UserCredentials>) {},
     loginSuccess(state, action: PayloadAction<UserData>) {
       state.data = action.payload
       state.isAuthenticated = true

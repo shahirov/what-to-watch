@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { MovieCardsList } from '../movie-сard-list'
+import { MovieCardList } from '../movie-сard-list'
 import { Movie } from '../../features/movies/slice'
 import { CatalogContent, Catalog, CatalogTitle } from './similar-movies-catalog-styles'
 
@@ -13,7 +13,7 @@ export const SimilarMoviesCatalog = ({ similarMovies }: SimilarMoviesCatalogProp
     <CatalogContent>
       <Catalog>
         <CatalogTitle>More like this</CatalogTitle>
-        <MovieCardsList movies={similarMovies} />
+        <MovieCardList movies={similarMovies} />
       </Catalog>
     </CatalogContent>
   )

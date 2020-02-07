@@ -1,7 +1,9 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { Logo } from '../logo'
 import { Header } from '../header'
+import { UserBlock } from '../user-block'
 import { MovieCardPoster } from '../movie-card-poster'
 import { MovieCardBackground } from '../movie-card-background'
 import { MovieCardDescription } from '../movie-card-description'
@@ -15,7 +17,10 @@ export const MovieCard = () => {
     promoMovie && (
       <StyledMovieCard>
         <MovieCardBackground movie={promoMovie} />
-        <Header />
+        <Header userPage={false}>
+          <Logo color="light" />
+          <UserBlock />
+        </Header>
         <Wrapper>
           <MovieCardInfo>
             <MovieCardPoster size="normal" movie={promoMovie} />

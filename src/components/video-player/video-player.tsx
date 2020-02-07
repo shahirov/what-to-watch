@@ -16,7 +16,6 @@ export const VideoPlayer = ({
   height
 }: VideoPlayerProps) => {
   const videoRef = useRef<HTMLVideoElement>(null)
-
   useEffect(() => {
     const video = videoRef && videoRef.current
 

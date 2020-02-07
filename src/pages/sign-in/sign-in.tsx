@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 import { Logo } from '../../components/logo'
+import { SignInPage } from './sign-in-styles'
 import { Footer } from '../../components/footer'
+import { Header } from '../../components/header'
+import { PageTitle } from '../../components/page-title'
 import { SingInForm } from '../../components/sign-in-form'
 import { selectAuth } from '../../features/user/selectors'
-import { Header, SignInPage, SignInPageTitle } from './sign-in-styles'
 
 export const SignIn = () => {
   const isAuthed = useSelector(selectAuth)
@@ -17,9 +19,9 @@ export const SignIn = () => {
 
   return (
     <SignInPage>
-      <Header>
+      <Header userPage={true}>
         <Logo color="light" />
-        <SignInPageTitle>Sign In</SignInPageTitle>
+        <PageTitle>Sign In</PageTitle>
       </Header>
       <SingInForm />
       <Footer />

@@ -13,7 +13,9 @@ import { selectMovieById, selectSimilarMovies } from '../../features/movies/sele
 export const MovieDetails = () => {
   const { movieId } = useParams<{ movieId: string }>()
 
-  const movie = useSelector<RootState, Movie | undefined>(state => selectMovieById(state, movieId))
+  const movie = useSelector<RootState, Movie | undefined>(state =>
+    selectMovieById(state, parseInt(movieId))
+  )
   const similarMovies = useSelector<RootState, Movie[]>(state => selectSimilarMovies(state, movie))
 
   return movie ? (
