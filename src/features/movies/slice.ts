@@ -23,6 +23,7 @@ export interface Movie {
 
 interface MoviesState {
   movies: Movie[]
+  favoriteMovies: Movie[]
   promoMovie: Movie | null
   isLoading: boolean
   error: AxiosError | null
@@ -30,6 +31,7 @@ interface MoviesState {
 
 const initialState: MoviesState = {
   movies: [],
+  favoriteMovies: [],
   promoMovie: null,
   isLoading: false,
   error: null
@@ -39,9 +41,9 @@ const startLoading = (state: MoviesState) => {
   state.isLoading = true
 }
 
-const loadingFailed = (state: MoviesState, action: PayloadAction<AxiosError>) => {
+const loadingFailed = (state: MoviesState, { payload }: PayloadAction<AxiosError>) => {
   state.isLoading = false
-  state.error = action.payload
+  state.error = payload
 }
 
 const movies = createSlice({
@@ -49,17 +51,36 @@ const movies = createSlice({
   initialState,
   reducers: {
     getMoviesRequest: startLoading,
-    getMoviesSuccess(state, action: PayloadAction<Movie[]>) {
+    getFavoriteMoviesRequest: startLoading,
+    getPromoMovieRequest: startLoading,
+    toggleFavoriteMovieRequest(state, action: PayloadAction<number>) {
+      state.isLoading = true
+    },
+    getMoviesSuccess(state, { payload }: PayloadAction<Movie[]>) {
       state.isLoading = false
-      state.movies = action.payload
+      state.movies = payload
+    },
+    getPromoMovieSuccess(state, { payload }: PayloadAction<Movie>) {
+      state.isLoading = false
+      state.promoMovie = payload
+    },
+    getFavoriteMoviesSuccess(state, { payload }: PayloadAction<Movie[]>) {
+      state.isLoading = false
+      state.favoriteMovies = payload
+    },
+    toggleFavoriteMovieSuccess(state, { payload }: PayloadAction<Movie>) {
+      state.isLoading = false
+
+      const favoriteMovie = state.favoriteMovies.find(movie => movie.id === payload.id)
+
+      state.favoriteMovies = favoriteMovie
+        ? state.favoriteMovies.filter(movie => movie.id !== favoriteMovie.id)
+        : [...state.favoriteMovies, payload]
     },
     getMoviesFailure: loadingFailed,
-    getPromoMovieRequest: startLoading,
-    getPromoMovieSuccess(state, action: PayloadAction<Movie>) {
-      state.isLoading = false
-      state.promoMovie = action.payload
-    },
-    getPromoMovieFailure: loadingFailed
+    getPromoMovieFailure: loadingFailed,
+    getFavoriteMoviesFailure: loadingFailed,
+    toggleFavoriteMovieFailure: loadingFailed
   }
 })
 
@@ -69,7 +90,13 @@ export const {
   getMoviesFailure,
   getPromoMovieRequest,
   getPromoMovieSuccess,
-  getPromoMovieFailure
+  getPromoMovieFailure,
+  getFavoriteMoviesRequest,
+  getFavoriteMoviesSuccess,
+  getFavoriteMoviesFailure,
+  toggleFavoriteMovieRequest,
+  toggleFavoriteMovieSuccess,
+  toggleFavoriteMovieFailure
 } = movies.actions
 
 export const moviesReducer = movies.reducer
