@@ -6,8 +6,9 @@ import { selectGenre } from '../genre/selectors'
 import { DEFAULT_MOVIE_GENRE, SIMILAR_MOVIES_LIMIT } from '../../global/constants'
 
 export const selectMovies = (state: RootState) => state.movies.movies
+export const selectFavoriteMovies = (state: RootState) => state.movies.favoriteMovies
 export const selectPromoMovie = (state: RootState) => state.movies.promoMovie
-export const selectMovieId = (state: RootState, id: string) => id
+export const selectMovieId = (state: RootState, id: number) => id
 
 export const selectMoviesByGenre = createSelector([selectGenre, selectMovies], (genre, movies) =>
   genre === DEFAULT_MOVIE_GENRE ? movies : movies.filter(movie => movie.genre === genre)
@@ -22,7 +23,12 @@ export const selectGenreList = createSelector([selectMovies], movies => {
 })
 
 export const selectMovieById = createSelector([selectMovies, selectMovieId], (movies, id) =>
-  movies.find(movie => movie.id.toString() === id)
+  movies.find(movie => movie.id === id)
+)
+
+export const selectFavoriteMovieById = createSelector(
+  [selectFavoriteMovies, selectMovieId],
+  (favoriteMovies, id) => favoriteMovies.find(movie => movie.id === id)
 )
 
 export const selectSimilarMovies = (state: RootState, currentMovie?: Movie) =>
