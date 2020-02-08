@@ -30,15 +30,15 @@ const user = createSlice({
   initialState,
   reducers: {
     loginStart(state, action: PayloadAction<UserCredentials>) {},
-    loginSuccess(state, action: PayloadAction<UserData>) {
-      state.data = action.payload
+    loginSuccess(state, { payload }: PayloadAction<UserData>) {
+      state.data = payload
       state.isAuthenticated = true
       state.error = null
     },
-    loginFailed(state, action: PayloadAction<AxiosError>) {
+    loginFailed(state, { payload }: PayloadAction<AxiosError>) {
       state.data = null
       state.isAuthenticated = false
-      state.error = action.payload
+      state.error = payload
     },
     echoUserStart() {}
   }
