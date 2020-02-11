@@ -20,7 +20,7 @@ export const MovieCardTop = ({ movie }: MovieCardTopProps) => {
   const tabs: Tabs = {
     Overview: <MovieCardOverview movie={movie} />,
     Details: <MovieCardDetails movie={movie} />,
-    Reviews: <MovieCardReviews />
+    Reviews: <MovieCardReviews movieId={movie.id} />
   }
 
   return (

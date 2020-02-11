@@ -9,23 +9,26 @@ import {
   ReviewDate,
   ReviewRating
 } from './review-styles'
+import { IReview } from '../../features/reviews/slice'
+import { formatDate } from '../../utils/date-convert'
 
-export const Review = () => {
+interface ReviewProps {
+  review: IReview
+}
+
+export const Review = ({ review: { comment, user, date, rating } }: ReviewProps) => {
   return (
     <StyledReview>
       <ReviewQuote>
-        <ReviewText>
-          Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European
-          kitsch of one of the director's funniest and most exquisitely designed movies in years.
-        </ReviewText>
+        <ReviewText>{comment}</ReviewText>
 
         <ReviewDetails>
-          <ReviewAuthor>Corey</ReviewAuthor>
-          <ReviewDate dateTime="2016-12-24">December 24, 2016</ReviewDate>
+          <ReviewAuthor>{user.name}</ReviewAuthor>
+          <ReviewDate dateTime="2016-12-24">{formatDate(new Date(date))}</ReviewDate>
         </ReviewDetails>
       </ReviewQuote>
 
-      <ReviewRating>8,9</ReviewRating>
+      <ReviewRating>{rating}</ReviewRating>
     </StyledReview>
   )
 }

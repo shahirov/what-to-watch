@@ -11,7 +11,7 @@ import { MoviePlayer } from '../../pages/movie-player'
 import { MovieDetails } from '../../pages/movie-details'
 import { GlobalStyles } from '../../global/global-styles'
 import { echoUserStart } from '../../features/user/slice'
-import { getFavoriteMoviesRequest } from '../../features/movies/slice'
+import { getFavoriteMoviesRequest, getMoviesRequest } from '../../features/movies/slice'
 
 export const App = () => {
   const dispatch = useDispatch()
@@ -19,6 +19,7 @@ export const App = () => {
   useEffect(() => {
     dispatch(echoUserStart())
     dispatch(getFavoriteMoviesRequest())
+    dispatch(getMoviesRequest())
   }, [dispatch])
 
   return (

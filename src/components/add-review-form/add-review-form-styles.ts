@@ -31,7 +31,7 @@ export const AddReviewSubmit = styled.div`
   padding: 10px 20px;
 `
 
-export const AddReviewButton = styled.button`
+export const AddReviewButton = styled.button<{ disabled: boolean }>`
   display: block;
   padding: 0;
   border: none;
@@ -43,6 +43,7 @@ export const AddReviewButton = styled.button`
   font-weight: bold;
   cursor: pointer;
   transition: opacity 0.2s;
+  opacity: ${({ disabled }) => disabled && '0.5'};
 
   &:hover {
     opacity: 0.5;

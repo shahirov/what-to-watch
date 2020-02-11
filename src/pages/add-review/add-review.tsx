@@ -2,13 +2,13 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 
-import { MovieCardHeader, Wrapper } from './add-review-styles'
 import { RootState } from '../../store'
 import { Logo } from '../../components/logo'
 import { Header } from '../../components/header'
 import { Movie } from '../../features/movies/slice'
 import { UserBlock } from '../../components/user-block'
 import { Breadcrumbs } from '../../components/breadcrumbs'
+import { MovieCardHeader, Wrapper } from './add-review-styles'
 import { MovieCardFull } from '../../components/movie-card-full'
 import { AddReviewForm } from '../../components/add-review-form'
 import { selectMovieById } from '../../features/movies/selectors'
@@ -26,7 +26,7 @@ export const AddReview = () => {
     return null
   }
 
-  const { rating } = movie
+  const { rating, id } = movie
 
   return (
     <MovieCardFull>
@@ -40,7 +40,7 @@ export const AddReview = () => {
         <MovieCardPoster movie={movie} size="small" />
       </MovieCardHeader>
       <Wrapper>
-        <AddReviewForm defaultRating={rating} />
+        <AddReviewForm defaultRating={rating} movieId={id} />
       </Wrapper>
     </MovieCardFull>
   )
