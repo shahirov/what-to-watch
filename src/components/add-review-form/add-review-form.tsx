@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 
 import {
   AddReviewText,
@@ -16,12 +15,15 @@ interface AddReviewFormProps {
   movieId: number
 }
 
+const MAX_RATING = 5
+
 export const AddReviewForm = ({ defaultRating, movieId }: AddReviewFormProps) => {
+  const normalizedDefaultRating = defaultRating < MAX_RATING ? Math.round(defaultRating) : 5
+
   const dispatch = useDispatch()
   const [comment, setComment] = useState('')
-  const [rating, setRating] = useState(defaultRating)
+  const [rating, setRating] = useState(normalizedDefaultRating)
   const [isValid, setIsValid] = useState(false)
-  const history = useHistory()
 
   const changeRating = (rating: number) => {
     setRating(rating)
@@ -40,7 +42,7 @@ export const AddReviewForm = ({ defaultRating, movieId }: AddReviewFormProps) =>
 
   const changeReviewText = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = event.target
-    const isReviewValid = validateReview(value)
+    const isReviewValid = validateReview(value.trim())
     const isRatingValid = validateRating(rating)
     const valid = isReviewValid && isRatingValid
 
@@ -50,10 +52,7 @@ export const AddReviewForm = ({ defaultRating, movieId }: AddReviewFormProps) =>
 
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
-    dispatch(addReviewRequest({ id: movieId, review: { rating, comment } }))
-    setRating(0)
-    setComment('')
-    history.push(`/movie/${movieId}`)
+    dispatch(addReviewRequest({ id: movieId, review: { comment: comment.trim(), rating } }))
   }
 
   return (

@@ -13,7 +13,7 @@ export interface UserCredentials {
   password: string
 }
 
-interface UserState {
+export interface UserState {
   isAuthenticated: boolean
   data: UserData | null
   error: AxiosError | null

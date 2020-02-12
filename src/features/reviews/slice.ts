@@ -1,6 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { AxiosError } from 'axios'
 
+export interface ReviewRequestPayload {
+  id: number
+  review: {
+    rating: number
+    comment: string
+  }
+}
+
 type User = {
   id: number
   name: string
@@ -14,7 +22,7 @@ export interface IReview {
   date: string
 }
 
-interface ReviewsState {
+export interface ReviewsState {
   reviews: IReview[]
   isLoading: boolean
   error: AxiosError | null
@@ -39,10 +47,7 @@ const reviews = createSlice({
       state.isLoading = true
       state.error = null
     },
-    addReviewRequest(
-      state,
-      action: PayloadAction<{ id: number; review: { rating: number; comment: string } }>
-    ) {
+    addReviewRequest(state, action: PayloadAction<ReviewRequestPayload>) {
       state.isLoading = false
       state.error = null
     },

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-interface GenreState {
+export interface GenreState {
   genre: string
 }
 

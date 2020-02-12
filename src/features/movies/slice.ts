@@ -21,7 +21,7 @@ export interface Movie {
   previewVideoLink: string
 }
 
-interface MoviesState {
+export interface MoviesState {
   movies: Movie[]
   favoriteMovies: Movie[]
   promoMovie: Movie | null

@@ -1,4 +1,5 @@
 import { all, fork, takeLatest, call, put } from 'redux-saga/effects'
+import { push } from 'connected-react-router'
 import { PayloadAction } from '@reduxjs/toolkit'
 import { AxiosError, AxiosResponse } from 'axios'
 
@@ -10,7 +11,8 @@ import {
   getReviewsSuccess,
   addReviewRequest,
   addReviewSuccess,
-  addReviewFailure
+  addReviewFailure,
+  ReviewRequestPayload
 } from './slice'
 
 function* fetchReviews({ payload: id }: PayloadAction<number>) {
@@ -23,12 +25,13 @@ function* fetchReviews({ payload: id }: PayloadAction<number>) {
   }
 }
 
-function* addReview({
-  payload: { id, review }
-}: PayloadAction<{ id: number; review: { rating: number; comment: string } }>) {
+function* addReview({ payload: { id, review } }: PayloadAction<ReviewRequestPayload>) {
   try {
-    yield call(api.post, `/comments/${id}`, review)
-    yield put(addReviewSuccess())
+    const response: AxiosResponse<IReview> = yield call(api.post, `/comments/${id}`, review)
+    if (response.status === 200) {
+      yield put(addReviewSuccess())
+      yield put(push(`/movie/${id}`))
+    }
   } catch (err) {
     const error = err as AxiosError
     yield put(addReviewFailure(error))
