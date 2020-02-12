@@ -1,1 +1,1 @@
-export * from './movie-player'
+export { MoviePlayer as default } from './movie-player'
